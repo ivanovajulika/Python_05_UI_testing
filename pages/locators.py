@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators():
     LINK_TO_PRODUCT_PAGE = (By.XPATH, "//ul[@id='browse']//ul//a")
     LOGIN_BTN = (By.CSS_SELECTOR, '#login_link')
+    ADD_BOOK = (By.XPATH, '//*[@id="default"]/div[2]/div/div/div/section/div/ol/li[1]/article/div[2]/form/button')
 
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
@@ -15,3 +16,6 @@ class LoginPageLocators():
 
 class BasePageLocators():
     USER_ICON = (By.CSS_SELECTOR, '.icon-user')
+
+class BasketPageLocators():
+    FORM_QUANTITY = (By.XPATH, '//*[@id="id_form-0-quantity"]')

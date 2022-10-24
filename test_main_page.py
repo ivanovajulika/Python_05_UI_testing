@@ -2,6 +2,7 @@ import pytest
 import time
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
+from .pages.bascet_page import BasketPage
 
 link = 'http://selenium1py.pythonanywhere.com/ru/'
 
@@ -12,10 +13,14 @@ def test_guest_can_go_to_catalogue(browser):
     page = MainPage(browser, link)
     # открывает страницу
     page.open_page()
+    browser.maximize_window()
     # проверяет, что на главной странице присутствует ссылка на страницу товаров
     page.should_be_link_to_product_page()
     # переходит на страницу с товарами
     page.go_to_product_page()
+    page.add_book()
+
+
 
 # Тест проверяет, что пользователь может перейти с главной страницы сайта на страницу авторизации
 @pytest.mark.regression
@@ -42,3 +47,15 @@ def test_user_сan_autorize(browser):
     page.register_user(email=str(time.time()) + '@mail.org', password='QAZ123edc!')
     # проверяет, что пользователь авторизован
     page.should_be_autorized_user()
+
+# Тест проверяет сколько товаров в корзине
+def test_count_in_basket(browser):
+    link = 'http://selenium1py.pythonanywhere.com/ru/basket/'
+    # создает экземпляр страницы корзины
+    page = BasketPage(browser, link)
+    # открывает страницу корзины
+    page.open_page()
+    browser.maximize_window()
+    time.sleep(3)
+    page.count()
+    

@@ -13,5 +13,8 @@ class MainPage(BasePage):
     def go_to_login_page(self):
         self.browser.find_element(*MainPageLocators.LOGIN_BTN).click()
 
+    def add_book(self):
+        self.browser.find_element(*MainPageLocators.ADD_BOOK).click()
+
 
 
